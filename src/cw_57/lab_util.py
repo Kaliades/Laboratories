@@ -18,12 +18,15 @@ def create_plot_for_poly(x, y, line):
         r2 = r2_score(y, y_pred)
         scoreR2[r2] = n
         scoreRMSE[rmse] = n
-        title = f'Wielomain {n}'
+        title = f'Wielomain {n} R2:{r2} RMSE:{rmse}'
         legend_element, = plt.plot(line, model(line), label=title, linewidth=3, c=colors[i])
         legend.append(legend_element)
         i += 1
 
     plt.legend(handles=legend)
+    plt.ylabel('I[mA]')
+    plt.xlabel('U[V]')
+    plt.title('Regresja wielomianowa')
     plt.show()
     minR2 = max(scoreR2.items())
     minRMSE = min(scoreRMSE.items())
