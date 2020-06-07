@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 from scipy.optimize import curve_fit
-
+import math
 
 def get_data_frame_from_csv(file_name):
     df = pd.read_csv(file_name)
@@ -37,3 +37,7 @@ def regression(data_frame):
         models[r] = model
         r += 1
     return models
+
+
+def relative_error(expect, result):
+    return math.fabs(expect - result) / expect * 100
